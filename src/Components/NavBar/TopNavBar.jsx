@@ -15,8 +15,8 @@ import { flexColumn, flexRow, flexRowSpaceBetween } from "../../commonStyles";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { useState } from "react";
-import NightlightTwoToneIcon from '@mui/icons-material/NightlightTwoTone';
-import LightModeTwoToneIcon from '@mui/icons-material/LightModeTwoTone';
+import NightlightTwoToneIcon from "@mui/icons-material/NightlightTwoTone";
+import LightModeTwoToneIcon from "@mui/icons-material/LightModeTwoTone";
 
 export const navItems = ["home", "packages", "company", "contact"];
 const authButtonStyles = {
@@ -27,29 +27,10 @@ const authButtonStyles = {
   padding: "5px 25px",
   width: "min-content",
 };
-export const TopNavBar = ({mode,setMode}) => {
+export const TopNavBar = ({ mode, setMode }) => {
   const theme = useTheme();
   const matchesmd = useMediaQuery(theme.breakpoints.down("md"));
   const [menuOpen, setMenuOpen] = useState(false);
-  const searchFiledStyles = {
-    height: "30px", // Total height
-    "& .MuiOutlinedInput-root": {
-      height: "100%", // Adjust input height
-      "& fieldset": {
-        borderColor: "background.primary", // Default border color
-      },
-      "&:hover fieldset": {
-        borderColor: "background.primary", // Border color on hover
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "background.primary", // Border color when focused
-      },
-    },
-    "& .MuiInputBase-root": {
-      backgroundColor: "background.primary", // Set background for the input
-      height: "100%", // Ensure the input fills the TextField height
-    },
-  };
 
   const menuOpenFunc = () => {
     setMenuOpen(true);
@@ -62,12 +43,15 @@ export const TopNavBar = ({mode,setMode}) => {
         ...flexRowSpaceBetween,
         backgroundColor: "background.primary",
         color: "text.primary",
-        p: { xs: "15px 30px" },
+        p: { xs: "15px 20px" },
         cursor: "pointer",
-        boxShadow: "5px 5px 20px lightgrey",
+        borderBottom: "1px solid lightgrey",
+        position: "sticky",
+        top: 0,
+        zIndex: 999,
       }}
     >
-      <Grid item xs={6} sx={{ ...flexRow }}>
+      <Grid item xs={12} md={6} sx={{ ...flexRowSpaceBetween }}>
         <Typography
           sx={{
             fontSize: {
@@ -80,17 +64,18 @@ export const TopNavBar = ({mode,setMode}) => {
         >
           Ticketify
         </Typography>
-        {/* <Box sx={{...flexRow,gap:"5px",background:"background.primary",maxWidth:"250px",padding:"5px 20px",borderRadius:"5px"}}>
-          <SearchRoundedIcon />
-          <TextField
-            autoComplete="off"
-            sx={searchFiledStyles}
-            variant="outlined"
-            placeholder="Search destinations"
-          />
-        </Box> */}
+        {matchesmd && (
+          <Box sx={{ ...flexRow, justifyContent: "end" }}>
+            <MenuRoundedIcon onClick={menuOpenFunc} />
+            <SlideMenu
+              navItems={navItems}
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
+            />
+          </Box>
+        )}
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={0} md={6}>
         {!matchesmd && (
           <Box sx={{ ...flexRow, justifyContent: "end", gap: "30px" }}>
             {navItems.map((item, index) => (
@@ -105,21 +90,18 @@ export const TopNavBar = ({mode,setMode}) => {
                 {item}
               </Link>
             ))}
-             <IconButton sx={{color:"text.primary"}} onClick={()=>setMode(mode === "light" ? "dark" : "light")}>
-                {mode === "light" ? <NightlightTwoToneIcon/> : <LightModeTwoToneIcon/>}
-             </IconButton>
+            <IconButton
+              sx={{ color: "text.primary" }}
+              onClick={() => setMode(mode === "light" ? "dark" : "light")}
+            >
+              {mode === "light" ? (
+                <NightlightTwoToneIcon />
+              ) : (
+                <LightModeTwoToneIcon />
+              )}
+            </IconButton>
             <Button sx={authButtonStyles}>Login</Button>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          </Box>
-        )}
-        {matchesmd && (
-          <Box sx={{ ...flexRow, justifyContent: "end" }}>
-            <MenuRoundedIcon onClick={menuOpenFunc} />
-            <SlideMenu
-              navItems={navItems}
-              menuOpen={menuOpen}
-              setMenuOpen={setMenuOpen}
-            />
           </Box>
         )}
       </Grid>
