@@ -61,7 +61,7 @@ export const PopularTours = () => {
         <Typography
           sx={{ fontSize: { xs: "24px", md: "28px" }, fontWeight: 500 }}
         >
-          Top 4 Popular Trips
+          Top 5 Popular Trips
         </Typography>
       </Box>
       <PopularListSlider />
@@ -80,7 +80,7 @@ function PopularListSlider() {
     infinite: false,
     slidesToShow: matchessm ? 1 : matchesmd ? 2 : matcheslg ? 3 : 5,
     slidesToScroll: matchessm ? 1 : matchesmd ? 2 : matcheslg ? 3 : 5,
-    autoplay: true,
+    autoplay: false,
     speed: 1000,
     arrows: false,
   };
