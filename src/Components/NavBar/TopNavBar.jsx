@@ -41,8 +41,10 @@ export const TopNavBar = ({ mode, setMode }) => {
       container
       sx={{
         ...flexRowSpaceBetween,
-        backgroundColor: "background.primary",
-        color: "text.primary",
+        // backgroundColor: "background.primary",
+        // color: "text.primary",
+        background:"#FFFFFF",
+        color:"#05073c",
         p: { xs: "15px 20px" },
         cursor: "pointer",
         borderBottom: "1px solid grey",
@@ -90,7 +92,7 @@ export const TopNavBar = ({ mode, setMode }) => {
                 {item}
               </Link>
             ))}
-            <IconButton
+            {/* <IconButton
               sx={{ color: "text.primary" }}
               onClick={() => setMode(mode === "light" ? "dark" : "light")}
             >
@@ -99,7 +101,7 @@ export const TopNavBar = ({ mode, setMode }) => {
               ) : (
                 <LightModeTwoToneIcon />
               )}
-            </IconButton>
+            </IconButton> */}
             <Button sx={authButtonStyles}>Login</Button>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </Box>

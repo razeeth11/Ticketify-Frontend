@@ -37,10 +37,10 @@ function App() {
   });
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <>
       <TopNavBar mode={mode} setMode={setMode} />
       <Home />
-    </ThemeProvider>
+    </>
   );
 }
 

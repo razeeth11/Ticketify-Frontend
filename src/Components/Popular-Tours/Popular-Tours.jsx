@@ -1,9 +1,18 @@
-import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Rating,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
-import { flexRowSpaceBetween } from "../../commonStyles";
+import { flexColumn, flexRow, flexRowSpaceBetween } from "../../commonStyles";
+import ModeOfTravelRoundedIcon from "@mui/icons-material/ModeOfTravelRounded";
+import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 
 const countryList = [
   {
@@ -29,6 +38,12 @@ const countryList = [
     countryName: "singapore",
     tours: 35,
   },
+  {
+    image:
+      "https://lh5.googleusercontent.com/p/AF1QipPnD7qZa34fpONMMu9S75mRDeFcHUcjsTxv5LuH=w675-h390-n-k-no",
+    countryName: "singapore",
+    tours: 35,
+  },
 ];
 
 export const PopularTours = () => {
@@ -40,7 +55,9 @@ export const PopularTours = () => {
         p: { xs: "40px 15px", md: "40px 80px" },
       }}
     >
-      <Box sx={{ ...flexRowSpaceBetween, cursor: "pointer", mb: 5 }}>
+      <Box
+        sx={{ ...flexRowSpaceBetween, cursor: "pointer", mb: { xs: 2, md: 3 } }}
+      >
         <Typography
           sx={{ fontSize: { xs: "24px", md: "28px" }, fontWeight: 500 }}
         >
@@ -57,58 +74,100 @@ function PopularListSlider() {
   const theme = useTheme();
   const matchessm = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesmd = useMediaQuery(theme.breakpoints.down("md"));
-  var settings = {
+  const matcheslg = useMediaQuery(theme.breakpoints.down("lg"));
+  const settings = {
     dots: true,
     infinite: false,
-    speed: 500,
-    slidesToShow: matchessm ? 1 : 4,
-    //   slidesToScroll:  matchessm ? 1 : 4,
-    slidesToScroll: 1,
+    slidesToShow: matchessm ? 1 : matchesmd ? 2 : matcheslg ? 3 : 5,
+    slidesToScroll: matchessm ? 1 : matchesmd ? 2 : matcheslg ? 3 : 5,
     autoplay: true,
+    speed: 1000,
+    arrows: false,
   };
   return (
     <Slider {...settings}>
       {countryList.map((item, index) => (
-        <Box
+        <Grid
           key={index}
           sx={{
-            minWidth: "250px",
-            borderRadius: 0,
-            background: "#FFFFFF",
             color: "#05073c",
             cursor: "pointer",
-            border: "0.5px solid lightgrey",
           }}
           // onClick={() => navigate(`/country/${item.countryName}`)}
         >
-          <Box>
-            <img
-              src={item.image}
-              alt={item.countryName}
-              style={{ width: "100%", height: "150px", objectFit: "cover" }}
-            />
+          <Box
+            sx={{
+              m: 1,
+              border: "0.5px solid lightgrey",
+              background: "#FFFFFF",
+              p: 1,
+              borderRadius: "5px",
+            }}
+          >
+            <Box>
+              <img
+                src={item.image}
+                alt={item.countryName}
+                style={{
+                  width: "100%",
+                  height: "200px",
+                  objectFit: "cover",
+                  borderRadius: "5px",
+                }}
+              />
+            </Box>
+            <Box sx={{ ...flexColumn, gap: "10px", marginTop: "10px" }}>
+              <Box sx={{ ...flexRow, gap: "5px" }}>
+                <ModeOfTravelRoundedIcon
+                  sx={{ fontSize: "18px", color: "#717171" }}
+                />
+                <Typography
+                  sx={{
+                    fontSize: "12px",
+                    textTransform: "capitalize",
+                    color: "#717171",
+                  }}
+                >
+                  paris, france
+                </Typography>
+              </Box>
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  fontWeight: 500,
+                  textTransform: "capitalize",
+                }}
+              >
+                Centipede Tour - Guided Arizona Desert Tour by ATV
+              </Typography>
+              <Box sx={{ ...flexRow, gap: "10px" }}>
+                <Rating
+                  name="read-only"
+                  value={3}
+                  readOnly
+                  sx={{ fontSize: "16px" }}
+                />
+                <Typography sx={{ fontSize: "12px" }}>4.8</Typography>
+              </Box>
+              <Box
+                sx={{
+                  ...flexRowSpaceBetween,
+                  borderTop: "1px solid #717171",
+                  p: "10px 0",
+                }}
+              >
+                <Box sx={{ ...flexRow, gap: "5px" }}>
+                  <AccessTimeRoundedIcon sx={{ fontSize: "20px" }} />
+                  <Typography sx={{ fontSize: "12px" }}>4 days</Typography>
+                </Box>
+                <Box sx={{ ...flexRow, gap: "5px" }}>
+                  <Typography sx={{ fontSize: "12px" }}>From</Typography>
+                  <Typography>$ 200</Typography>
+                </Box>
+              </Box>
+            </Box>
           </Box>
-          <Box sx={{ p: 1.5 }}>
-            <Typography
-              sx={{
-                fontSize: "18px",
-                fontWeight: 500,
-                textTransform: "capitalize",
-              }}
-            >
-              {item.countryName}
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: "12px",
-                textTransform: "capitalize",
-                color: "#717171",
-              }}
-            >
-              {item.tours}+ tours
-            </Typography>
-          </Box>
-        </Box>
+        </Grid>
       ))}
     </Slider>
   );

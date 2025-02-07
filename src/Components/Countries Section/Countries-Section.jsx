@@ -82,7 +82,7 @@ export const CountrySection = () => {
         p: { xs: "40px 15px", md: "40px 80px" },
       }}
     >
-      <Box sx={{ ...flexRowSpaceBetween, cursor: "pointer", mb: 5 }}>
+      <Box sx={{ ...flexRowSpaceBetween, cursor: "pointer", mb: {xs:2,md:3} }}>
         <Typography
           sx={{ fontSize: { xs: "24px", md: "28px" }, fontWeight: 500 }}
         >
@@ -100,43 +100,43 @@ function CountryListSlider() {
   const theme = useTheme();
   const matchessm = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesmd = useMediaQuery(theme.breakpoints.down("md"));
-  var settings = {
-    dots: true,
+  const matchesxl = useMediaQuery(theme.breakpoints.down("xl"));
+  const settings = {
+    dots:true,
     infinite: true,
-    speed: 500,
-    slidesToShow: matchessm ? 1 : matchesmd ? 3 : 6,
-    //   slidesToScroll:  matchessm ? 1 : matchesmd ? 3 : 6,
-    slidesToScroll: 2,
-    autoplay: true,
+    slidesToShow: matchessm ? 1 : matchesmd ? 3 : matchesxl ? 3 : 6,
+    slidesToScroll: 1,
+    autoplay:true,
+    speed:1000,
+    arrows: false,
   };
   return (
-    <Slider {...settings} sx={{ border: "1px solid red" }}>
+    <Slider {...settings}>
       {countryList.map((item, index) => (
         <Box
           key={index}
           sx={{
-            minWidth: "250px",
-            borderRadius: 0,
             background: "#FFFFFF",
             color: "#05073c",
             cursor: "pointer",
-            border: "0.5px solid lightgrey",
           }}
           onClick={() => navigate(`/country/${item.countryName}`)}
         >
+          <Box sx={{m:0.5,border: "0.5px solid lightgrey",p:1,borderRadius:"5px"}}>
           <Box>
             <img
               src={item.image}
               alt={item.countryName}
-              style={{ width: "100%", height: "150px", objectFit: "cover" }}
+              style={{ width: "100%", height: "150px", objectFit: "cover",borderRadius:"5px" }}
             />
           </Box>
-          <Box sx={{ p: 1.5 }}>
+          <Box>
             <Typography
               sx={{
                 fontSize: "18px",
                 fontWeight: 500,
                 textTransform: "capitalize",
+                mt:1.5
               }}
             >
               {item.countryName}
@@ -150,6 +150,7 @@ function CountryListSlider() {
             >
               {item.tours}+ tours
             </Typography>
+          </Box>
           </Box>
         </Box>
       ))}
