@@ -1,16 +1,9 @@
-import {
-  Box,
-  Card,
-  Grid,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { flexRow, flexRowSpaceBetween } from "../../commonStyles";
-import { useNavigate } from "react-router-dom";
+import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
+import { flexRowSpaceBetween } from "../../commonStyles";
 
 const countryList = [
   {
@@ -36,44 +29,9 @@ const countryList = [
     countryName: "singapore",
     tours: 35,
   },
-  {
-    image:
-      "https://lh5.googleusercontent.com/p/AF1QipMchaaCzZGyDmXFVv7-VI05ouLTCpMABzzXoae6=w675-h390-n-k-no",
-    countryName: "south korea",
-    tours: 57,
-  },
-  {
-    image:
-      "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRPOO_I43JLYxe_3AO8ppfq4o9CeuMFAn53-dCYi_JylEM2wMJ-LiYOhqStAh0xDZiIdG5I59Rb8oDre1Vmx1HcMlyNhQZnpkA3RL77wQ",
-    countryName: "egypt",
-    tours: 90,
-  },
-  {
-    image:
-      "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQRO4eHdJOYXVW_9OfzyVlwQO4GHbaofuJ1kbyIVxyYdEnVRc_ZrkuPG9-hPRz7PaKcMa28EIycGMBnW0VFlEfoNSYnFwArxNyeV_eDmA",
-    countryName: "germany",
-    tours: 40,
-  },
-  {
-    image:
-      "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQ3mqMbzV7TMbcKf1Kekhe_e-YYfJjEeTQxr5eV-asnHv61yqUTLxrb0Q_-vdtmlSnBVEwnjEoz8EkiuRfHH1isV3_5Mteq7bF3pj-wPg",
-    countryName: "netherlands",
-    tours: 49,
-  },
-  {
-    image:
-      "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcR2d9FlM4co456nbrT5p1TVWYM8gIoNt5HNxJ5UEeoPWZDdd9LtR82pCrjJiyHTPHZOVpwghRqssLNTpSaFNkdiyNpClq0FLeqJma-rcA",
-    countryName: "china",
-    tours: 78,
-  },
-  {
-    image:
-      "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSGeHu8Bqk8KjF5fV6TBDnkmSXgn-J4p0MY6aNEOILS2rQWf78HWbHhLzLae74eE0MXmrNExDJl3Pqc_m7h9pWZsU7Yol1wZGqwTf-Big",
-    countryName: "austria",
-    tours: 32,
-  },
 ];
-export const CountrySection = () => {
+
+export const PopularTours = () => {
   return (
     <Grid
       sx={{
@@ -86,31 +44,30 @@ export const CountrySection = () => {
         <Typography
           sx={{ fontSize: { xs: "24px", md: "28px" }, fontWeight: 500 }}
         >
-          Trending Countries
+          Top 4 Popular Trips
         </Typography>
-        <Typography>See All</Typography>
       </Box>
-      <CountryListSlider />
+      <PopularListSlider />
     </Grid>
   );
 };
 
-function CountryListSlider() {
+function PopularListSlider() {
   const navigate = useNavigate();
   const theme = useTheme();
   const matchessm = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesmd = useMediaQuery(theme.breakpoints.down("md"));
   var settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: matchessm ? 1 : matchesmd ? 3 : 6,
-    //   slidesToScroll:  matchessm ? 1 : matchesmd ? 3 : 6,
-    slidesToScroll: 2,
+    slidesToShow: matchessm ? 1 : 4,
+    //   slidesToScroll:  matchessm ? 1 : 4,
+    slidesToScroll: 1,
     autoplay: true,
   };
   return (
-    <Slider {...settings} sx={{ border: "1px solid red" }}>
+    <Slider {...settings}>
       {countryList.map((item, index) => (
         <Box
           key={index}
@@ -122,7 +79,7 @@ function CountryListSlider() {
             cursor: "pointer",
             border: "0.5px solid lightgrey",
           }}
-          onClick={() => navigate(`/country/${item.countryName}`)}
+          // onClick={() => navigate(`/country/${item.countryName}`)}
         >
           <Box>
             <img

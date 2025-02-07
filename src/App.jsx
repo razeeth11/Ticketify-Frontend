@@ -6,8 +6,8 @@ import { TopNavBar } from "./Components/NavBar/TopNavBar";
 import { LandingSection } from "./Components/LandingPage/LandingSection";
 import { PackagesSection } from "./Components/PackagesSection/PackagesSection";
 import { CountrySection } from "./Components/Countries Section/Countries-Section";
+import { PopularTours } from "./Components/Popular-Tours/Popular-Tours";
 
-// onClick={()=>setMode(mode === "light" ? "dark" : "light")}
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -50,6 +50,7 @@ const Home = () => {
       <LandingSection />
       <PackagesSection/>
       <CountrySection/>
+      <PopularTours/>
     </Grid>
   );
 };
