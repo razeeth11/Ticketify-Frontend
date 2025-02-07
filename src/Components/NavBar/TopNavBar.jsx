@@ -45,7 +45,7 @@ export const TopNavBar = ({ mode, setMode }) => {
         color: "text.primary",
         p: { xs: "15px 20px" },
         cursor: "pointer",
-        borderBottom: "1px solid lightgrey",
+        borderBottom: "1px solid grey",
         position: "sticky",
         top: 0,
         zIndex: 999,

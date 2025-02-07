@@ -5,7 +5,7 @@ import Image3 from "../../Images/image3.webp";
 import Image4 from "../../Images/image4.jpeg";
 import Image5 from "../../Images/image5.jpeg";
 import Texture from "../../Images/shape.svg";
-import { flexRow } from "../../commonStyles";
+import { flexColumn, flexRow } from "../../commonStyles";
 import { useEffect, useState } from "react";
 import LocalActivityTwoToneIcon from "@mui/icons-material/LocalActivityTwoTone";
 import AutoAwesomeTwoToneIcon from "@mui/icons-material/AutoAwesomeTwoTone";
@@ -83,7 +83,7 @@ export const LandingSection = () => {
       <Grid
         container
         sx={{
-          height: { xs: "300px", md: "600px" },
+          height: { xs: "320px", md: "650px" },
         }}
       >
         <Grid
@@ -96,7 +96,6 @@ export const LandingSection = () => {
             backgroundPosition: "center",
             height: "100%",
             width: "100%",
-            borderRadius: "10px",
             position: "relative",
           }}
         >
@@ -130,12 +129,12 @@ export const LandingSection = () => {
 
       {/* landing services section  */}
 
-      <Grid container spacing={4} sx={{ mt: { xs: 3, md: 10 } }}>
+      <Grid container spacing={4} sx={{ mt: { xs: 3, md: 10 },padding:{xs:"15px",md:"10px 80px"} }}>
         {services.map((item, index) => (
-          <Grid item xs={matches400 ? 12 : 6} sm={6} md={3}>
+          <Grid key={index} item xs={matches400 ? 12 : 6} sm={6} md={3} sx={{...flexColumn,gap:"10px"}}>
             <item.image sx={{ fontSize: "40px" }} />
             <Typography sx={{ fontWeight: 600 }}>{item.title}</Typography>
-            <Typography sx={{ color: "text.secondary", fontSize: "14px" }}>
+            <Typography sx={{ color: "#717171", fontSize: "14px" }}>
               {item.text}
             </Typography>
           </Grid>

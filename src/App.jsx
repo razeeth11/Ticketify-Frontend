@@ -4,11 +4,12 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Grid } from "@mui/material";
 import { TopNavBar } from "./Components/NavBar/TopNavBar";
 import { LandingSection } from "./Components/LandingPage/LandingSection";
+import { PackagesSection } from "./Components/PackagesSection/PackagesSection";
 
 // onClick={()=>setMode(mode === "light" ? "dark" : "light")}
 
 function App() {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState("light");
   const darkTheme = createTheme({
     palette: {
       mode: mode,
@@ -44,14 +45,9 @@ function App() {
 
 const Home = () => {
   return (
-    <Grid
-      sx={{
-        backgroundColor: "background.primary",
-        color: "text.primary",
-        padding: { xs: "20px", md: "20px 40px" },
-      }}
-    >
+    <Grid>
       <LandingSection />
+      <PackagesSection/>
     </Grid>
   );
 };
