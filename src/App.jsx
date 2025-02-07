@@ -5,6 +5,7 @@ import { Grid } from "@mui/material";
 import { TopNavBar } from "./Components/NavBar/TopNavBar";
 import { LandingSection } from "./Components/LandingPage/LandingSection";
 import { PackagesSection } from "./Components/PackagesSection/PackagesSection";
+import { CountrySection } from "./Components/Countries Section/Countries-Section";
 
 // onClick={()=>setMode(mode === "light" ? "dark" : "light")}
 
@@ -48,6 +49,7 @@ const Home = () => {
     <Grid>
       <LandingSection />
       <PackagesSection/>
+      <CountrySection/>
     </Grid>
   );
 };

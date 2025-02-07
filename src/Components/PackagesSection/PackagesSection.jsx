@@ -2,44 +2,41 @@ import {
   Box,
   Button,
   Grid,
-  Link,
-  Paper,
-  styled,
   Typography,
 } from "@mui/material";
-import Image1 from "../../Images/image1.webp";
 import { flexColumn, flexRow } from "../../commonStyles";
 import IndiaImage from "../../Images/indiaimage.webp";
 import InternationalImage from "../../Images/internationalimage.webp";
 import HoneymoonImage from "../../Images/honeymoonimage.jpg";
 import EuropeImage from "../../Images/europeimage.webp";
 import EducationalImage from "../../Images/eduationalimage.webp";
+import { Link } from "react-router-dom";
 
 const tourPackageList = [
   {
     image: IndiaImage,
     name: "india tour packages",
-    url: "india-tour-packages",
+    url: "india",
   },
   {
     image: InternationalImage,
     name: "international tour packages",
-    url: "international-tour-packages",
+    url: "international",
   },
   {
     image: HoneymoonImage,
     name: "honey tour packages",
-    url: "honeymoon-tour-packages",
+    url: "honeymoon",
   },
   {
     image: EuropeImage,
     name: "europe tour packages",
-    url: "europe-tour-packages",
+    url: "europe",
   },
   {
     image: EducationalImage,
     name: "educational tour packages",
-    url: "educational-tour-packages",
+    url: "educational",
   },
 ];
 
@@ -54,7 +51,7 @@ export const PackagesSection = () => {
       }}
     >
       <Typography
-        sx={{ fontSize: "32px", fontWeight: 500, color: "text.primary", mb: 5 }}
+        sx={{ fontSize: {xs:"24px",md:"28px"}, fontWeight: 500, color: "text.primary", mb: 3 }}
       >
         Tour Packages
       </Typography>
@@ -97,7 +94,7 @@ export const PackagesSection = () => {
                 >
                   {item.name}
                 </Typography>
-                <Link to={item.url}>
+                <Link to={`/country/${item.url}`}>
                   <Button
                     sx={{
                       background: "#eb662b",

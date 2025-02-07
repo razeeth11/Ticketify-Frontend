@@ -4,4 +4,6 @@ body{
 
 *{
   font-family: "Roboto", serif !important;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: none;
 }
