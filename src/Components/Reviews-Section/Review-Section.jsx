@@ -42,7 +42,7 @@ export const ReviewSection = () => {
 function ReviewList() {
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,

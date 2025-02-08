@@ -24,7 +24,7 @@ const authButtonStyles = {
   color: "#FFFFFF",
   textTransform: "capitalize",
   borderRadius: "50px",
-  padding: "5px 25px",
+  padding: "5px 20px",
   width: "min-content",
 };
 export const TopNavBar = ({ mode, setMode }) => {
