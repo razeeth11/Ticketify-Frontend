@@ -71,6 +71,7 @@ export const PopularTours = () => {
 
 function PopularListSlider() {
   const theme = useTheme();
+  const navigate = useNavigate()
   const matchessm = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesmd = useMediaQuery(theme.breakpoints.down("md"));
   const matcheslg = useMediaQuery(theme.breakpoints.down("lg"));
@@ -92,7 +93,7 @@ function PopularListSlider() {
             color: "#05073c",
             cursor: "pointer",
           }}
-          // onClick={() => navigate(`/country/${item.countryName}`)}
+          onClick={() => navigate(`/package/${item.countryName}`)}
         >
           <Box
             sx={{

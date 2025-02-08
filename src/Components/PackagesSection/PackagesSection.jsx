@@ -16,27 +16,22 @@ const tourPackageList = [
   {
     image: IndiaImage,
     name: "india tour packages",
-    url: "india",
   },
   {
     image: InternationalImage,
     name: "international tour packages",
-    url: "international",
   },
   {
     image: HoneymoonImage,
-    name: "honey tour packages",
-    url: "honeymoon",
+    name: "honeymoon tour packages",
   },
   {
     image: EuropeImage,
     name: "europe tour packages",
-    url: "europe",
   },
   {
     image: EducationalImage,
     name: "educational tour packages",
-    url: "educational",
   },
 ];
 
@@ -93,7 +88,7 @@ export const PackagesSection = () => {
                 >
                   {item.name}
                 </Typography>
-                <Link to={`/country/${item.url}`}>
+                <Link to={`/packages/${item.name}`}>
                   <Button
                     sx={{
                       background: "#eb662b",

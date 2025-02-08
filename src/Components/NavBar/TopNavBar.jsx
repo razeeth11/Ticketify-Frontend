@@ -4,19 +4,15 @@ import {
   Button,
   Drawer,
   Grid,
-  IconButton,
   Link,
-  TextField,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { flexColumn, flexRow, flexRowSpaceBetween } from "../../commonStyles";
-import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { useState } from "react";
-import NightlightTwoToneIcon from "@mui/icons-material/NightlightTwoTone";
-import LightModeTwoToneIcon from "@mui/icons-material/LightModeTwoTone";
+import { useNavigate } from "react-router-dom";
 
 export const navItems = ["home", "packages", "company", "contact"];
 const authButtonStyles = {
@@ -27,7 +23,8 @@ const authButtonStyles = {
   padding: "5px 20px",
   width: "min-content",
 };
-export const TopNavBar = ({ mode, setMode }) => {
+export const TopNavBar = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const matchesmd = useMediaQuery(theme.breakpoints.down("md"));
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,13 +38,11 @@ export const TopNavBar = ({ mode, setMode }) => {
       container
       sx={{
         ...flexRowSpaceBetween,
-        // backgroundColor: "background.primary",
-        // color: "text.primary",
-        background:"#FFFFFF",
-        color:"#05073c",
+        background: "#FFFFFF",
+        color: "#05073c",
         p: { xs: "15px 20px" },
         cursor: "pointer",
-        boxShadow:"0.5px 0.5px 10px lightgrey",
+        boxShadow: "0.5px 0.5px 10px lightgrey",
         position: "sticky",
         top: 0,
         zIndex: 999,
@@ -65,6 +60,7 @@ export const TopNavBar = ({ mode, setMode }) => {
           </Box>
         )}
         <Typography
+          onClick={() => navigate("/")}
           sx={{
             fontSize: {
               xs: "24px",
@@ -76,11 +72,13 @@ export const TopNavBar = ({ mode, setMode }) => {
         >
           Tourify.com
         </Typography>
-        
-        {matchesmd && <Box sx={{ ...flexRow }}>
-          {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
-          <Button sx={authButtonStyles}>Login</Button>
-        </Box>}
+
+        {matchesmd && (
+          <Box sx={{ ...flexRow }}>
+            {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
+            <Button sx={authButtonStyles}>Login</Button>
+          </Box>
+        )}
       </Grid>
       <Grid item xs={0} md={6}>
         {!matchesmd && (
@@ -97,16 +95,6 @@ export const TopNavBar = ({ mode, setMode }) => {
                 {item}
               </Link>
             ))}
-            {/* <IconButton
-              sx={{ color: "text.primary" }}
-              onClick={() => setMode(mode === "light" ? "dark" : "light")}
-            >
-              {mode === "light" ? (
-                <NightlightTwoToneIcon />
-              ) : (
-                <LightModeTwoToneIcon />
-              )}
-            </IconButton> */}
             <Button sx={authButtonStyles}>Login</Button>
           </Box>
         )}

@@ -120,7 +120,7 @@ function CountryListSlider() {
             color: "#05073c",
             cursor: "pointer",
           }}
-          onClick={() => navigate(`/country/${item.countryName}`)}
+          onClick={() => navigate(`/${item.countryName}/allPackages`)}
         >
           <Box sx={{m:0.5,border: "0.5px solid lightgrey",p:1,borderRadius:"5px"}}>
           <Box>
