@@ -4,7 +4,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { flexColumn, flexRow } from "../../commonStyles";
+import { flexColumn } from "../../commonStyles";
 import IndiaImage from "../../Images/indiaimage.webp";
 import InternationalImage from "../../Images/internationalimage.webp";
 import HoneymoonImage from "../../Images/honeymoonimage.jpg";
@@ -46,8 +46,7 @@ export const PackagesSection = () => {
       sx={{
         backgroundColor: "background.primary",
         color: "text.primary",
-        mt: 5,
-        p: { xs: "40px 15px", md: "80px" },
+        mt:{xs:"80px",md:"100px"},
       }}
     >
       <Typography

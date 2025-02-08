@@ -129,7 +129,7 @@ export const LandingSection = () => {
 
       {/* landing services section  */}
 
-      <Grid container spacing={4} sx={{ mt: { xs: 3, md: 10 },padding:{xs:"15px",md:"10px 80px"} }}>
+      <Grid container spacing={4} sx={{ mt: { xs: 3, md: 10 },p:{xs:"20px",md:"20px 80px"} }}>
         {services.map((item, index) => (
           <Grid key={index} item xs={matches400 ? 12 : 6} sm={6} md={3} sx={{...flexColumn,gap:"10px"}}>
             <item.image sx={{ fontSize: "40px" }} />

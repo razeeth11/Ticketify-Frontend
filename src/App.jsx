@@ -7,6 +7,8 @@ import { LandingSection } from "./Components/LandingPage/LandingSection";
 import { PackagesSection } from "./Components/PackagesSection/PackagesSection";
 import { CountrySection } from "./Components/Countries Section/Countries-Section";
 import { PopularTours } from "./Components/Popular-Tours/Popular-Tours";
+import { ReviewSection } from "./Components/Reviews-Section/Review-Section";
+import { ContactSection } from "./Components/Contact-Section/Contact-Section";
 
 
 function App() {
@@ -46,12 +48,16 @@ function App() {
 
 const Home = () => {
   return (
-    <Grid>
+    <>
       <LandingSection />
+    <Grid sx={{p: { xs: "0 15px 40px 15px", md: "0px 80px 0 80px" },}}>
       <PackagesSection/>
       <CountrySection/>
       <PopularTours/>
+      <ReviewSection/>
     </Grid>
+      <ContactSection/>
+    </>
   );
 };
 

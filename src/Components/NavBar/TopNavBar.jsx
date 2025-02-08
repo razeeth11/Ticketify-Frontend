@@ -47,25 +47,13 @@ export const TopNavBar = ({ mode, setMode }) => {
         color:"#05073c",
         p: { xs: "15px 20px" },
         cursor: "pointer",
-        borderBottom: "1px solid grey",
+        boxShadow:"0.5px 0.5px 10px lightgrey",
         position: "sticky",
         top: 0,
         zIndex: 999,
       }}
     >
       <Grid item xs={12} md={6} sx={{ ...flexRowSpaceBetween }}>
-        <Typography
-          sx={{
-            fontSize: {
-              xs: "24px",
-              md: "28px",
-              fontWeight: 600,
-              letterSpacing: "3px",
-            },
-          }}
-        >
-          Ticketify
-        </Typography>
         {matchesmd && (
           <Box sx={{ ...flexRow, justifyContent: "end" }}>
             <MenuRoundedIcon onClick={menuOpenFunc} />
@@ -76,6 +64,23 @@ export const TopNavBar = ({ mode, setMode }) => {
             />
           </Box>
         )}
+        <Typography
+          sx={{
+            fontSize: {
+              xs: "24px",
+              md: "28px",
+              fontWeight: 600,
+              letterSpacing: "3px",
+            },
+          }}
+        >
+          Tourify.com
+        </Typography>
+        
+        {matchesmd && <Box sx={{ ...flexRow }}>
+          {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
+          <Button sx={authButtonStyles}>Login</Button>
+        </Box>}
       </Grid>
       <Grid item xs={0} md={6}>
         {!matchesmd && (
@@ -103,7 +108,6 @@ export const TopNavBar = ({ mode, setMode }) => {
               )}
             </IconButton> */}
             <Button sx={authButtonStyles}>Login</Button>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </Box>
         )}
       </Grid>

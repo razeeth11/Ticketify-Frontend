@@ -6,7 +6,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { flexRow, flexRowSpaceBetween } from "../../commonStyles";
+import { flexRowSpaceBetween } from "../../commonStyles";
 import { useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -79,7 +79,7 @@ export const CountrySection = () => {
       sx={{
         backgroundColor: "background.primary",
         color: "text.primary",
-        p: { xs: "40px 15px", md: "40px 80px" },
+        mt:{xs:"80px",md:"100px"},
       }}
     >
       <Box sx={{ ...flexRowSpaceBetween, cursor: "pointer", mb: {xs:2,md:3} }}>

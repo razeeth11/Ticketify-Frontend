@@ -14,7 +14,7 @@ import { flexColumn, flexRow, flexRowSpaceBetween } from "../../commonStyles";
 import ModeOfTravelRoundedIcon from "@mui/icons-material/ModeOfTravelRounded";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 
-const countryList = [
+export const countryList = [
   {
     image: "https://fastwaytours.com/wp-content/uploads/2023/10/paris-1.jpg",
     countryName: "france",
@@ -52,7 +52,7 @@ export const PopularTours = () => {
       sx={{
         backgroundColor: "background.primary",
         color: "text.primary",
-        p: { xs: "40px 15px", md: "40px 80px" },
+        mt:{xs:"80px",md:"100px"},
       }}
     >
       <Box
@@ -70,7 +70,6 @@ export const PopularTours = () => {
 };
 
 function PopularListSlider() {
-  const navigate = useNavigate();
   const theme = useTheme();
   const matchessm = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesmd = useMediaQuery(theme.breakpoints.down("md"));
@@ -97,7 +96,7 @@ function PopularListSlider() {
         >
           <Box
             sx={{
-              m: 1,
+              m: 0.5,
               border: "0.5px solid lightgrey",
               background: "#FFFFFF",
               p: 1,
@@ -162,7 +161,7 @@ function PopularListSlider() {
                 </Box>
                 <Box sx={{ ...flexRow, gap: "5px" }}>
                   <Typography sx={{ fontSize: "12px" }}>From</Typography>
-                  <Typography>$ 200</Typography>
+                  <Typography sx={{fontWeight:600}}>$200</Typography>
                 </Box>
               </Box>
             </Box>

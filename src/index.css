@@ -8,3 +8,7 @@ body{
   scrollbar-width: none;
   -webkit-overflow-scrolling: none;
 }
+
+input::placeholder {
+  color: black;
+}
