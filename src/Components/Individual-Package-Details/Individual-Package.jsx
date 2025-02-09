@@ -21,18 +21,20 @@ import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 import { BookingSectionContainer } from "./Booking-Section-Container";
 import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import StepContent from "@mui/material/StepContent";
-import { useState } from "react";
-import PlayCircleFilledWhiteRoundedIcon from "@mui/icons-material/PlayCircleFilledWhiteRounded";
-import FiberManualRecordRoundedIcon from "@mui/icons-material/FiberManualRecordRounded";
+import { useEffect } from "react";
+import { VerticalLinearStepper } from "./Itinerray-Section";
+import { MapSectionIframe } from "../Map-Section/Map-Section-Iframe";
+import { PackageQueryForm } from "./Package-Query-Form";
 
 export const IndividualPackage = () => {
   const { country } = useParams();
   const theme = useTheme();
   const matchesmd = useMediaQuery(theme.breakpoints.down("md"));
+
+  useEffect(()=>{
+      window.scrollTo(0,0)
+    },[])
+
   return (
     <Grid
       container
@@ -62,10 +64,10 @@ export const IndividualPackage = () => {
         <Typography
           sx={{
             fontSize: {
-              xs: "20px",
-              md: "32px",
+              xs: "24px",
+              md: "28px",
               fontWeight: 500,
-              maxWidth: "600px",
+              maxWidth: "700px",
               textDecoration: "underline",
             },
           }}
@@ -192,8 +194,8 @@ export const IndividualPackage = () => {
       >
         {/* left container  */}
 
-        <Grid item xs={12} md={7}>
-          <Stack sx={{ p: 1 }}>
+        <Grid item xs={12} md={7.5}>
+          <Stack>
             {/* trips details section */}
 
             <Box sx={{ ...flexRowSpaceBetween, flexWrap: "wrap", gap: "15px" }}>
@@ -201,7 +203,7 @@ export const IndividualPackage = () => {
                 <Box key={index} sx={{ ...flexRow, gap: "10px" }}>
                   <AccessTimeRoundedIcon
                     sx={{
-                      border: "0.5px solid #e7e6e6",
+                      border: "0.5px solid #717171",
                       borderRadius: "5px",
                       p: "5px",
                       fontSize: "24px",
@@ -292,6 +294,7 @@ export const IndividualPackage = () => {
                   <Stack sx={{ gap: "15px", mb: 10 }}>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
                       <Box
+                      key={index}
                         sx={{ ...flexRow, alignItems: "start", gap: "10px" }}
                       >
                         <CloseRoundedIcon
@@ -314,17 +317,42 @@ export const IndividualPackage = () => {
               </Grid>
             </Stack>
 
-            <Stack>
+
+            {/* itenirary section  */}
+            <Stack sx={{gap:"40px",mb:10}}>
               <Typography
                 sx={{
                   fontSize: { xs: "24px", md: "28px" },
                   fontWeight: 600,
-                  mb: 5,
                 }}
               >
                 Itinerary Overview
               </Typography>
               <VerticalLinearStepper />
+            </Stack>
+
+
+            {/* map ifram section */}
+
+            <Stack sx={{gap:"30px",mb:10}}>
+            <Typography
+                sx={{
+                  fontSize: { xs: "24px", md: "28px" },
+                  fontWeight: 600,
+                }}
+              >
+                Map Overview
+              </Typography>
+              <Box sx={{width:"100%",border:'1px solid #717171'}}>
+              <MapSectionIframe/>
+              </Box>
+            </Stack>
+
+
+            {/* package query form section */}
+
+            <Stack sx={{p:2,border:"1px solid #717171"}}>
+              <PackageQueryForm/>
             </Stack>
           </Stack>
         </Grid>
@@ -340,100 +368,3 @@ export const IndividualPackage = () => {
     </Grid>
   );
 };
-
-const steps = [
-  {
-    label: "Day 1",
-    description: `For each ad campaign that you create, you can control how much
-                you're willing to spend on clicks and conversions, which networks
-                and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: "Day 2",
-    description:
-      "An ad group contains one or more ads which target a shared set of keywords.",
-  },
-  {
-    label: "Day 3",
-    description: `Try out different ad text to see what brings in the most customers,
-                and learn how to enhance your ads using features like ad extensions.
-                If you run into any problems with your ads, find out how to tell if
-                they're running and how to resolve approval issues.`,
-  },
-];
-
-export default function VerticalLinearStepper() {
-  const [activeStep, setActiveStep] = useState(0);
-
-  const handleReset = (index) => {
-    setActiveStep(index);
-  };
-
-  const CustomStepIcon = ({ icon }) => (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "50%",
-        backgroundColor: "#eb662b",
-        color: "white",
-      }}
-    >
-      {icon == 1 ? (
-        <PlayCircleFilledWhiteRoundedIcon />
-      ) : (
-        <FiberManualRecordRoundedIcon />
-      )}
-    </Box>
-  );
-
-  return (
-    <Box>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((step, index) => (
-          <Step
-            key={step.label}
-            sx={{
-              "& .MuiStepIcon-root": {
-                color: "#eb662b",
-              },
-              "& .MuiStepIcon-root.Mui-completed": {
-                color: "#eb662b",
-              },
-            }}
-          >
-            <StepLabel
-              StepIconComponent={CustomStepIcon}
-              onClick={() => handleReset(index)}
-              sx={{
-                cursor: "pointer",
-                "& .MuiStepLabel-label": {
-                  color: "#eb662b !important", // Always apply this color
-                  fontWeight: 500,
-                },
-                "& .Mui-disabled": {
-                  cursor: "pointer", // Allow clicking even when 'disabled'
-                },
-                "& .MuiStepLabel-iconContainer": {
-                  color: "#eb662b !important", // Ensure the icon matches the label color
-                },
-              }}
-            >
-              {step.label}
-            </StepLabel>
-            <StepContent
-              sx={{
-                "& .MuiStepContent-root": {
-                  background: "#eb662b",
-                },
-              }}
-            >
-              <Typography>{step.description}</Typography>
-            </StepContent>
-          </Step>
-        ))}
-      </Stepper>
-    </Box>
-  );
-}

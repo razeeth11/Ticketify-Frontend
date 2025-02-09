@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Card, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import IndiaImage from "../../Images/indiaimage.webp";
 import { useParams } from "react-router-dom";
 import { flexRow, flexRowSpaceBetween } from "../../commonStyles";
@@ -34,16 +34,19 @@ export const CategoryPackage = () => {
           height: { xs: "300px", md: "600px" },
         }}
       >
-        <Typography
+        <Card
           sx={{
-            fontSize: { xs: "24px", md: "36px" },
+            fontSize: { xs: "24px", md: "28px" },
             color: "#FFFFFF",
-            fontWeight: 600,
+            fontWeight: 500,
             textTransform: "capitalize",
+            background:"#eb662b",
+            padding:"10px 30px",
+            borderRadius:"50px"
           }}
         >
           {country} Packages
-        </Typography>
+        </Card>
       </Grid>
 
       {/* main image grid ends*/}

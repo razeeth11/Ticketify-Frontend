@@ -65,9 +65,9 @@ export const TopNavBar = () => {
             fontSize: {
               xs: "24px",
               md: "28px",
-              fontWeight: 600,
-              letterSpacing: "3px",
             },
+            fontWeight: 600,
+            letterSpacing: "3px",
           }}
         >
           Tourify.com

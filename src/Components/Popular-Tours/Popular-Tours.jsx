@@ -1,7 +1,9 @@
 import {
   Box,
+  Card,
   Grid,
   Rating,
+  Stack,
   Typography,
   useMediaQuery,
   useTheme,
@@ -37,13 +39,7 @@ export const countryList = [
       "https://lh5.googleusercontent.com/p/AF1QipPnD7qZa34fpONMMu9S75mRDeFcHUcjsTxv5LuH=w675-h390-n-k-no",
     countryName: "singapore",
     tours: 35,
-  },
-  {
-    image:
-      "https://lh5.googleusercontent.com/p/AF1QipPnD7qZa34fpONMMu9S75mRDeFcHUcjsTxv5LuH=w675-h390-n-k-no",
-    countryName: "singapore",
-    tours: 35,
-  },
+  }
 ];
 
 export const PopularTours = () => {
@@ -61,7 +57,7 @@ export const PopularTours = () => {
         <Typography
           sx={{ fontSize: { xs: "24px", md: "28px" }, fontWeight: 500 }}
         >
-          Top 5 Popular Trips
+          Top 4 Popular Trips
         </Typography>
       </Box>
       <PopularListSlider />
@@ -78,8 +74,8 @@ function PopularListSlider() {
   const settings = {
     dots: true,
     infinite: false,
-    slidesToShow: matchessm ? 1 : matchesmd ? 2 : matcheslg ? 3 : 5,
-    slidesToScroll: matchessm ? 1 : matchesmd ? 2 : matcheslg ? 3 : 5,
+    slidesToShow: matchessm ? 1 : matchesmd ? 2 : matcheslg ? 3 : 4,
+    slidesToScroll: matchessm ? 1 : matchesmd ? 2 : matcheslg ? 3 : 4,
     autoplay: false,
     speed: 1000,
     arrows: false,
@@ -95,13 +91,12 @@ function PopularListSlider() {
           }}
           onClick={() => navigate(`/package/${item.countryName}/package-name`)}
         >
-          <Box
+          <Card
             sx={{
               m: 0.5,
               border: "0.5px solid lightgrey",
               background: "#FFFFFF",
-              p: 1,
-              borderRadius: "5px",
+              borderRadius: "10px",
             }}
           >
             <Box>
@@ -112,11 +107,11 @@ function PopularListSlider() {
                   width: "100%",
                   height: "200px",
                   objectFit: "cover",
-                  borderRadius: "5px",
+                  borderRadius: "10px 10px 0 0",
                 }}
               />
             </Box>
-            <Box sx={{ ...flexColumn, gap: "10px", marginTop: "10px" }}>
+            <Box sx={{ ...flexColumn, gap: "10px", margin: "10px 15px" }}>
               <Box sx={{ ...flexRow, gap: "5px" }}>
                 <ModeOfTravelRoundedIcon
                   sx={{ fontSize: "18px", color: "#717171" }}
@@ -153,7 +148,7 @@ function PopularListSlider() {
                 sx={{
                   ...flexRowSpaceBetween,
                   borderTop: "1px solid #717171",
-                  p: "10px 0",
+                  pt:1.5
                 }}
               >
                 <Box sx={{ ...flexRow, gap: "5px" }}>
@@ -166,7 +161,7 @@ function PopularListSlider() {
                 </Box>
               </Box>
             </Box>
-          </Box>
+          </Card>
         </Grid>
       ))}
     </Slider>

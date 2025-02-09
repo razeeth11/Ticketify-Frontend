@@ -8,7 +8,7 @@ import { flexColumn, flexRow } from "../../commonStyles";
 
 export const ContactSection = () => {
   const iconStyle = {
-    fontSize: { xs: "18px", md: "28px" },
+    fontSize: { xs: "18px", md: "20px" },
     background: "lightgrey",
     padding: "5px",
     borderRadius: "50%",
@@ -17,7 +17,6 @@ export const ContactSection = () => {
   const iconBoxStyle = {
     ...flexRow,
     gap: "10px",
-    fontSize: "20px",
     fontWeight: 500,
   };
   const containerStyle = {
@@ -60,7 +59,7 @@ export const ContactSection = () => {
       <Grid item xs={12} md={6}>
         <Box sx={containerStyle}>
           <Typography
-            sx={{ fontSize: { xs: "24px", md: "32px" }, fontWeight: 600 }}
+            sx={{ fontSize: { xs: "24px", md: "28px" }, fontWeight: 600 }}
           >
             Stay Connected With us
           </Typography>
@@ -85,7 +84,7 @@ export const ContactSection = () => {
             }}
           >
             <Typography
-              sx={{ fontSize: "24px", fontWeight: 500, textAlign: "center" }}
+              sx={{ fontSize:  { xs: "24px", md: "28px" }, fontWeight: 500, textAlign: "center" }}
             >
               Book Your Dream Vacay Today!
             </Typography>

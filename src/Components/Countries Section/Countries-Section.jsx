@@ -2,6 +2,7 @@ import {
   Box,
   Card,
   Grid,
+  Stack,
   Typography,
   useMediaQuery,
   useTheme,
@@ -113,7 +114,7 @@ function CountryListSlider() {
   return (
     <Slider {...settings}>
       {countryList.map((item, index) => (
-        <Box
+        <Stack
           key={index}
           sx={{
             background: "#FFFFFF",
@@ -122,21 +123,20 @@ function CountryListSlider() {
           }}
           onClick={() => navigate(`/packages/${item.countryName}/package-category`)}
         >
-          <Box sx={{m:0.5,border: "0.5px solid lightgrey",p:1,borderRadius:"5px"}}>
+          <Card sx={{m:0.5,borderRadius:"10px"}}>
           <Box>
             <img
               src={item.image}
               alt={item.countryName}
-              style={{ width: "100%", height: "150px", objectFit: "cover",borderRadius:"5px" }}
+              style={{ width: "100%", height: "200px", objectFit: "cover",borderRadius:"10px 10px 0 0" }}
             />
           </Box>
-          <Box>
+          <Box sx={{padding:"10px 15px"}}>
             <Typography
               sx={{
                 fontSize: "18px",
                 fontWeight: 500,
                 textTransform: "capitalize",
-                mt:1.5
               }}
             >
               {item.countryName}
@@ -151,8 +151,8 @@ function CountryListSlider() {
               {item.tours}+ tours
             </Typography>
           </Box>
-          </Box>
-        </Box>
+          </Card>
+        </Stack>
       ))}
     </Slider>
   );

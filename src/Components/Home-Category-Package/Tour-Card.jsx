@@ -5,14 +5,14 @@ import IndiaImage from "../../Images/indiaimage.webp";
 
 export const TourCard = () => {
     return (
-      <Card sx={{ p: 1.5 }}>
-        <Box sx={{ height: "250px" }}>
+      <Card sx={{borderRadius:"10px"}}>
+        <Box sx={{ height: "200px" }}>
           <img
             src={IndiaImage}
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </Box>
-        <Box sx={{ ...flexColumn, gap: "10px", m: "15px 0" }}>
+        <Box sx={{ ...flexColumn, gap: "10px", p:2 }}>
           <Box sx={{ ...flexRowSpaceBetween }}>
             <Box sx={{ ...flexRow, gap: "5px" }}>
               <ModeOfTravelRoundedIcon
@@ -20,7 +20,7 @@ export const TourCard = () => {
               />
               <Typography
                 sx={{
-                  fontSize: "14px",
+                  fontSize: "12px",
                   textTransform: "capitalize",
                   color: "#717171",
                 }}
@@ -30,7 +30,7 @@ export const TourCard = () => {
             </Box>
             <Typography
               sx={{
-                fontSize: "14px",
+                fontSize: "12px",
                 textTransform: "capitalize",
                 color: "#717171",
               }}
@@ -40,7 +40,7 @@ export const TourCard = () => {
           </Box>
           <Typography
             sx={{
-              fontSize: "18px",
+              fontSize: "16px",
               fontWeight: 500,
               textTransform: "capitalize",
             }}
@@ -57,7 +57,7 @@ export const TourCard = () => {
             />
             <Typography sx={{ fontSize: "12px" }}>4.8</Typography>
           </Box>
-          <Typography sx={{ fontSize: "16px" }}>
+          <Typography sx={{ fontSize: "14px" }}>
             The Phi Phi archipelago is a must-visit while in Phuket, and this
             speedboat trip.
           </Typography>

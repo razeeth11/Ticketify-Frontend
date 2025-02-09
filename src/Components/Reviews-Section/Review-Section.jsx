@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Card,
   Grid,
   Rating,
   Typography,
@@ -60,11 +61,12 @@ function ReviewList() {
           }}
           // onClick={() => navigate(`/country/${item.countryName}`)}
         >
-          <Box
+          <Card
             sx={{
-              m: 0.5,
               background: "#FFFFFF",
               p: 3,
+              maxWidth:"300px",
+              margin:"0 auto"
             }}
           >
             <Box>
@@ -126,7 +128,7 @@ function ReviewList() {
                 recommend them!
               </Typography>
             </Box>
-          </Box>
+          </Card>
         </Grid>
       ))}
     </Slider>
