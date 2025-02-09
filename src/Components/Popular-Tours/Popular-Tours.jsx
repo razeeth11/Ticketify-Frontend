@@ -93,7 +93,7 @@ function PopularListSlider() {
             color: "#05073c",
             cursor: "pointer",
           }}
-          onClick={() => navigate(`/package/${item.countryName}`)}
+          onClick={() => navigate(`/package/${item.countryName}/package-name`)}
         >
           <Box
             sx={{

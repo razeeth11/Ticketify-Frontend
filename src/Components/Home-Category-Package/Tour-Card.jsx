@@ -1,14 +1,14 @@
 import { Box, Card, Rating, Typography } from "@mui/material";
-import { Image } from "./CategoryPackages";
 import { flexColumn, flexRow, flexRowSpaceBetween } from "../../commonStyles";
 import ModeOfTravelRoundedIcon from "@mui/icons-material/ModeOfTravelRounded";
+import IndiaImage from "../../Images/indiaimage.webp";
 
 export const TourCard = () => {
     return (
       <Card sx={{ p: 1.5 }}>
         <Box sx={{ height: "250px" }}>
           <img
-            src={Image}
+            src={IndiaImage}
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </Box>

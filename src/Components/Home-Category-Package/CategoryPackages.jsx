@@ -1,39 +1,22 @@
 import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import IndiaImage from "../../Images/indiaimage.webp";
-import InternationalImage from "../../Images/internationalimage.webp";
-import HoneymoonImage from "../../Images/honeymoonimage.jpg";
-import EuropeImage from "../../Images/europeimage.webp";
-import EducationalImage from "../../Images/eduationalimage.webp";
 import { useParams } from "react-router-dom";
 import { flexRow, flexRowSpaceBetween } from "../../commonStyles";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 import { FilterSection } from "./Filter-Section";
 import { TourCard } from "./Tour-Card";
+import { useEffect } from "react";
 
-export let Image;
+export const indicationStyle = { fontSize: "12px", fontWeight: 500, opacity: 0.4 };
 export const CategoryPackage = () => {
-  const { packageCategory } = useParams();
   const theme = useTheme();
+  const { country } = useParams();
   const matcheslg = useMediaQuery(theme.breakpoints.down("lg"));
-  switch (packageCategory) {
-    case "india tour packages":
-      Image = IndiaImage;
-      break;
-    case "international tour packages":
-      Image = InternationalImage;
-      break;
-    case "honeymoon tour packages":
-      Image = HoneymoonImage;
-      break;
-    case "europe tour packages":
-      Image = EuropeImage;
-      break;
-    case "educational tour packages":
-      Image = EducationalImage;
-      break;
-  }
 
-  const indicationStyle = { fontSize: "12px", fontWeight: 500, opacity: 0.4 };
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
   const textStyles = { fontSize: { xs: "12px", md: "16px" }, fontWeight: 400 };
 
   return (
@@ -45,7 +28,7 @@ export const CategoryPackage = () => {
         sx={{
           ...flexRow,
           justifyContent: "center",
-          backgroundImage: `url(${Image})`,
+          backgroundImage: `url(${IndiaImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           height: { xs: "300px", md: "600px" },
@@ -59,7 +42,7 @@ export const CategoryPackage = () => {
             textTransform: "capitalize",
           }}
         >
-          {packageCategory}
+          {country} Packages
         </Typography>
       </Grid>
 
@@ -77,14 +60,14 @@ export const CategoryPackage = () => {
           <Typography
             sx={{ ...indicationStyle, textTransform: "capitalize", opacity: 1 }}
           >
-            {packageCategory}
+            {country} Packages
           </Typography>
         </Box>
       </Grid>
       <Grid container sx={{ margin: { xs: "0px", md: "30px 80px" } }}>
         <Grid item xs={0} lg={2.5}>
           {!matcheslg && (
-            <Box>
+            <Box sx={{position:"sticky",top:"80px"}}>
               <FilterSection />
             </Box>
           )}

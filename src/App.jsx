@@ -9,6 +9,7 @@ import { PopularTours } from "./Components/Popular-Tours/Popular-Tours";
 import { ReviewSection } from "./Components/Reviews-Section/Review-Section";
 import { ContactSection } from "./Components/Contact-Section/Contact-Section";
 import { CategoryPackage } from "./Components/Home-Category-Package/CategoryPackages";
+import { IndividualPackage } from "./Components/Individual-Package-Details/Individual-Package";
 
 function App() {
   return (
@@ -16,9 +17,8 @@ function App() {
       <TopNavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/packages/:packageCategory" element={<CategoryPackage />} />
-        <Route path="/:country/allPackages" element={<CountryPackages />} />
-        <Route path="/package/:packageName" element={<IndividualPackage />} />
+        <Route path="/packages/:country/:package-category" element={<CategoryPackage />} />
+        <Route path="/package/:country/:package-name" element={<IndividualPackage />} />
       </Routes>
     </>
   );
@@ -38,20 +38,5 @@ const Home = () => {
     </>
   );
 };  
-
-function CountryPackages(){
-  return(
-    <Grid>
-      CountryPackages
-    </Grid>
-  )
-}
-function IndividualPackage(){
-  return(
-    <Grid>
-      IndividualPackage
-    </Grid>
-  )
-}
 
 export default App;

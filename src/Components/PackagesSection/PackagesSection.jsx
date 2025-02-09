@@ -12,26 +12,26 @@ import EuropeImage from "../../Images/europeimage.webp";
 import EducationalImage from "../../Images/eduationalimage.webp";
 import { Link } from "react-router-dom";
 
-const tourPackageList = [
+export const tourPackageList = [
   {
     image: IndiaImage,
-    name: "india tour packages",
+    name: "tour-package",
   },
   {
     image: InternationalImage,
-    name: "international tour packages",
+    name: "international-package",
   },
   {
     image: HoneymoonImage,
-    name: "honeymoon tour packages",
+    name: "honeymoon-package",
   },
   {
     image: EuropeImage,
-    name: "europe tour packages",
+    name: "europe-package",
   },
   {
     image: EducationalImage,
-    name: "educational tour packages",
+    name: "educational-package",
   },
 ];
 
@@ -88,7 +88,7 @@ export const PackagesSection = () => {
                 >
                   {item.name}
                 </Typography>
-                <Link to={`/packages/${item.name}`}>
+                <Link to={`/packages/country/${item.name}`}>
                   <Button
                     sx={{
                       background: "#eb662b",
